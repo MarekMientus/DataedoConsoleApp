@@ -11,8 +11,19 @@
     {
         static void Main(string[] args)
         {
-            var reader = new DataReader();
-            reader.ImportAndPrintData("dataa.csv");
+            try
+            {
+                var reader = new DataReader();
+                var printer = new DataPrinter();
+                reader.ImportData("data.csv");
+                printer.PrintData(reader.ImportedObjects);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            Console.ReadLine();
         }
     }
 }

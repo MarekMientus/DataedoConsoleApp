@@ -1,0 +1,36 @@
+Poniżej przedstawione uwagi dotyczące błędów oraz zmian po moim code review.
+
+- Zła nazwa pliku przekazywana w Program.cs w lini 15. Powinno być 'data.csv'.
+
+- Usunięcie nieużywanego parametru printData z metody ImportAndPrintData.
+
+- Niepotrzebna inicjalizacja listy ImportedObjects z objektem ImportedObject. Ostatecznie inicjalizowana jest lokalna lista, która pod koniec dzialania metody jest przypisywana do globalnie zdeklarowanej zmiennej ImportedObjects.
+
+- Odseparowanie od siebie funkcjonalności read i print do osobnych klas. Klasa DataReader importuje dane z pliku csv natomiast klasa DataPrinter zajmuje się wyświetlaniem danych w konsoli.
+
+- W klasie DataReader zmiana nazwy metody ImportAndPrintData na ImportData ponieważ tylko tym się zajmuje.
+
+- Zastąpienie ładowania pliku prz użyciu StreamReader na File.ReadLines(...).
+
+- Pomijamy pierwszy wiersz z pliku csv ponieważ jest nagłówkowy.
+
+- Pomijamy puste linie.
+
+- Refactoryzacja danych modelowych na trzy osobne klasy dla Database, Table i Column dziedziczące z klasy ImportedModelBase.
+
+- Wydzielenie kodu na potrzeby prywatnych metod GetMergedImportedData i GetClearedData w celu odseparowania funkcjonalności.
+
+- Określenie NumberOfChildren na podstawie ilości elementów w liście Tables oraz Columns
+
+- Przeniesienie klas modelowych do osobnych plików.
+
+- Uporzodkowanie typów zmiennych w nich zawartych. Wszystkie zostały zadeklarowane jako property.
+
+
+- Zmiana IsNullable na typ bool.
+
+- Zmiana NumberOfChildren na typ int. Nigdy nie będzie zmiennoprzecinkowy.
+
+- W klasie DataPrinter wykorzystanie składni LINQ w celu wyświetlenia danych w konsoli.
+
+- Zastosowanie bloku try catch w celu przechwycenia błędów (mamy tutaj odczyt pliku i parsowanie danych z pliku) i wyświetlenie błędu w konsoli.

@@ -43,7 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataPrinter.cs" />
     <Compile Include="DataReader.cs" />
+    <Compile Include="Models\ColumnModel.cs" />
+    <Compile Include="Models\DatabaseModel.cs" />
+    <Compile Include="Models\ImportedModelBase.cs" />
+    <Compile Include="Models\TableModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
